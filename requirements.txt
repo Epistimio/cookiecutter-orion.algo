@@ -1,0 +1,7 @@
+## Python requirements for using the python-app template. 
+##
+##    pip install --requirement=requirements.txt
+##
+cookiecutter>=1.5
+versioneer>=0.18
+jinja2
