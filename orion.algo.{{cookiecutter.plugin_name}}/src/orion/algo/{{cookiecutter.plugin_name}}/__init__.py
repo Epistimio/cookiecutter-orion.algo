@@ -10,7 +10,6 @@
 TODO: Write long description
 """
 from ._version import get_versions
-from .registrar import {{ cookiecutter.registrardb_classname }}
 
 VERSIONS = get_versions()
 del get_versions
