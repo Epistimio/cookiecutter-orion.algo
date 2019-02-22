@@ -27,7 +27,7 @@ setup_args = dict(
     include_package_data=True,
     entry_points={
         'OptimizationAlgorithm': [
-            '{{ cookiecutter.plugin_name }}_{{ cookiecutter.algo_name }} = orion.algo.{{ cookiecutter.plugin_name }}.{{cookiecutter.algo_name }}'
+            '{{ cookiecutter.plugin_name }}_{{ cookiecutter.algo_name }} = orion.algo.{{ cookiecutter.plugin_name }}.{{ cookiecutter.algo_module_name }}:{{cookiecutter.algo_name }}'
             ],
         },
     install_requires=['orion.core'],
