@@ -1,0 +1,6 @@
+algorithms:
+  {{cookiecutter.algo_name}}: null
+    # NOTE: Add arguments here if necessary
+
+database:
+  type: 'EphemeralDB'
