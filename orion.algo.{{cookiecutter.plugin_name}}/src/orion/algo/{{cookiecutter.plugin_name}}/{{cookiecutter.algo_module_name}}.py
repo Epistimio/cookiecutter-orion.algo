@@ -23,7 +23,7 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
         """
         super({{ cookiecutter.algo_name }}, self).__init__(space)
 
-    def suggest(self, name=1):
+    def suggest(self, num=1):
         """Suggest a `num`ber of new sets of parameters.
 
         TODO: document how suggest work for this algo
