@@ -1,5 +1,5 @@
 algorithms:
-  {{cookiecutter.algo_name}}: null
+  {{cookiecutter.algo_name}}: {}
     # NOTE: Add arguments here if necessary
 
 database:
