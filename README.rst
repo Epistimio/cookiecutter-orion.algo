@@ -35,3 +35,27 @@ Create a new project directly from the template on `GitHub`_:
 .. code-block:: console
    
     $ cookiecutter gh:bouthilx/cookiecutter-orion.algo
+
+Info about values to enter?
+
+This will create package structure. What is in it?
+Give info about entry-point?
+
+Implementation
+==============
+
+Explain what to do.
+
+Explain main points. Algo must be copiable with get_state, set_state, seedable, etc.
+
+
+Tests
+=====
+
+How do we test?
+
+
+Contribute
+==========
+
+How do I get my algo moved into github.org/Epistimio to make it an official plugin?
