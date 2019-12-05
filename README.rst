@@ -2,8 +2,8 @@
 Orion Algorithm Template
 =========================
 
- .. _travis: https://travis-ci.org/bouthilx/cookiecutter-orion.algo
- .. |travis.png| image:: https://travis-ci.org/bouthilx/cookiecutter-orion.algo.png
+ .. _travis: https://travis-ci.org/Epistimio/cookiecutter-orion.algo
+ .. |travis.png| image:: https://travis-ci.org/Epistimio/cookiecutter-orion.algo.png
     :alt: Travis CI build status
     :target: `travis`_
 
@@ -20,7 +20,7 @@ This is a `Cookiecutter`_ template for creating a Orion Algorithm Plugin.
 Usage
 =====
 
-.. _GitHub: https://github.com/bouthilx/cookiecutter-orion.algo
+.. _GitHub: https://github.com/Epistimio/cookiecutter-orion.algo
 
 
 Install Python requirements to use the template:
@@ -34,7 +34,7 @@ Create a new project directly from the template on `GitHub`_:
 
 .. code-block:: console
    
-    $ cookiecutter gh:bouthilx/cookiecutter-orion.algo
+    $ cookiecutter gh:Epistimio/cookiecutter-orion.algo
     plugin_name []: skopt
     author_name []: Xavier Bouthillier
     author_short [Author Name]:
@@ -46,30 +46,30 @@ Create a new project directly from the template on `GitHub`_:
     algo_name []: BayesianOptimizer
     algo_module_name [bayesianoptimizer]: bayes
 
-+-----------------------+-----------------------------------------+
-| Field                 | Description                             |
-+-----------------------+-----------------------------------------+
-| ``plugin_name``       | Will be used for orion.algo.plugin_name |
-+-----------------------+-----------------------------------------+
-| ``author_name``       | For metadata of python package          |
-+-----------------------+-----------------------------------------+
-| ``author_short``      | For metadata of python package          |
-+-----------------------+-----------------------------------------+
-| ``author_email``      | For metadata of python package          |
-+-----------------------+-----------------------------------------+
-| ``github_username``   | bouthilx                                |
-+-----------------------+-----------------------------------------+
-| ``copyright``         | For the BSD-3 license                   |
-|                       | (You can change the license)            |
-+-----------------------+-----------------------------------------+
-| ``short_description`` | For metadata of python package          |
-+-----------------------+-----------------------------------------+
-| ``synopsis``          | For documentation in algo module        |
-+-----------------------+-----------------------------------------+
-| ``algo_name``         | Name for the algorithm class            |
-+-----------------------+-----------------------------------------+
-| ``algo_module_name``  | Name of the algorihtm module            |
-+-----------------------+-----------------------------------------+
++-----------------------+--------------------------------------------+--+
+| Field                 | Description                                |  |
++-----------------------+--------------------------------------------+--+
+| ``plugin_name``       | Will be used for orion.algo.plugin_name    |  |
++-----------------------+--------------------------------------------+--+
+| ``author_name``       | For metadata of python package             |  |
++-----------------------+--------------------------------------------+--+
+| ``author_short``      | For metadata of python package             |  |
++-----------------------+--------------------------------------------+--+
+| ``author_email``      | For metadata of python package             |  |
++-----------------------+--------------------------------------------+--+
+| ``github_username``   | Username to build the url for installation |  |
++-----------------------+--------------------------------------------+--+
+| ``copyright``         | For the BSD-3 license                      |  |
+|                       | (You can change the license)               |  |
++-----------------------+--------------------------------------------+--+
+| ``short_description`` | For metadata of python package             |  |
++-----------------------+--------------------------------------------+--+
+| ``synopsis``          | For documentation in algo module           |  |
++-----------------------+--------------------------------------------+--+
+| ``algo_name``         | Name for the algorithm class               |  |
++-----------------------+--------------------------------------------+--+
+| ``algo_module_name``  | Name of the algorihtm module               |  |
++-----------------------+--------------------------------------------+--+
 
 This will create package structure. 
 

@@ -33,7 +33,7 @@
 
 ----
 
-This `orion.algo`_ plugin was generated with `Cookiecutter`_ along with `@bouthilx`_'s `cookiecutter-orion.algo`_ template.
+This `orion.algo`_ plugin was generated with `Cookiecutter`_ along with `@Epistimio`_'s `cookiecutter-orion.algo`_ template.
 
 
 Features
@@ -79,8 +79,8 @@ Issues
 If you encounter any problems, please `file an issue`_ along with a detailed description.
 
 .. _`Cookiecutter`: https://github.com/audreyr/cookiecutter
-.. _`@bouthilx`: https://github.com/bouthilx
+.. _`@Epistimio`: https://github.com/Epistimio
 .. _`GNU GPL v3.0`: http://www.gnu.org/licenses/gpl-3.0.txt
-.. _`cookiecutter-orion.algo`: https://github.com/bouthilx/cookiecutter-orion.algo
+.. _`cookiecutter-orion.algo`: https://github.com/Epistimio/cookiecutter-orion.algo
 .. _`file an issue`: https://github.com/{{cookiecutter.github_username}}/cookiecutter-orion.algo.{{cookiecutter.plugin_name}}/issues
 .. _`orion`: https://github.com/Epistimio/orion
