@@ -35,11 +35,106 @@ Create a new project directly from the template on `GitHub`_:
 .. code-block:: console
    
     $ cookiecutter gh:bouthilx/cookiecutter-orion.algo
+    plugin_name []: skopt
+    author_name []: Xavier Bouthillier
+    author_short [Author Name]:
+    author_email []: xavier.bouthillier@umontreal.ca
+    github_username []: bouthilx
+    copyright [2019, Author Name]:
+    short_description [TODO]:
+    synopsis [TODO]:
+    algo_name []: BayesianOptimizer
+    algo_module_name [bayesianoptimizer]: bayes
 
-Info about values to enter?
++-----------------------+-----------------------------------------+
+| Field                 | Description                             |
++-----------------------+-----------------------------------------+
+| ``plugin_name``       | Will be used for orion.algo.plugin_name |
++-----------------------+-----------------------------------------+
+| ``author_name``       | For metadata of python package          |
++-----------------------+-----------------------------------------+
+| ``author_short``      | For metadata of python package          |
++-----------------------+-----------------------------------------+
+| ``author_email``      | For metadata of python package          |
++-----------------------+-----------------------------------------+
+| ``github_username``   | bouthilx                                |
++-----------------------+-----------------------------------------+
+| ``copyright``         | For the BSD-3 license                   |
+|                       | (You can change the license)            |
++-----------------------+-----------------------------------------+
+| ``short_description`` | For metadata of python package          |
++-----------------------+-----------------------------------------+
+| ``synopsis``          | For documentation in algo module        |
++-----------------------+-----------------------------------------+
+| ``algo_name``         | Name for the algorithm class            |
++-----------------------+-----------------------------------------+
+| ``algo_module_name``  | Name of the algorihtm module            |
++-----------------------+-----------------------------------------+
 
-This will create package structure. What is in it?
-Give info about entry-point?
+This will create package structure. 
+
+::
+
+    orion.algo.{plugin_name}
+    ├── README.rst
+    ├── setup.cfg
+    ├── setup.py
+    ├── MANIFEST.in
+    ├── LICENSE (BSD License)
+    ├── versioneer.py 
+    ├── tox.ini
+    ├── doc
+    │   ├── requirements.txt
+    │   └── src
+    │       ├── conf.py
+    │       └── index.rst
+    ├── tests
+    │   ├── requirements.txt
+    │   └── benchmark
+    │       ├── requirements.txt
+    │       ├── main.py
+    │       ├── rosenbrock.py
+    │       ├── {algoname}.yaml
+    │       ├── bayesopt.yaml
+    │       └── random_search.yaml
+    └── src
+        └── orion
+            └── algo
+                └── {plugin_name}
+                    ├── {algoname}.py
+                    └── _version.py
+
+``LICENSE``
+
+    (Note that you are free to change the License, copyright is to your name)
+
+``versioneer.py``
+``src/orion/algo/{plugin_name}/_version.py``
+
+   (to version automatically your algo, just ignore these if you don't plan to make releases)
+
+``tests``
+
+   Automatically generated tests
+
+``tests/benchmark``
+
+   Automatically generated benchmark test using the yaml files
+   created in the same folder.
+
+``doc``
+
+   Automatically generated template for documentation
+
+``tox.ini``
+
+   Tox file defining commands to run tests, build doc and publish code.
+
+
+The important files to modify are ``src/orion/algo/{plugin_name}/{module_name}.py`` to implement the
+algorithm and ``tests/benchmark/{algo_name}.yaml`` to fill the arguments required for the algorithm
+you implement.
+
 
 Implementation
 ==============
