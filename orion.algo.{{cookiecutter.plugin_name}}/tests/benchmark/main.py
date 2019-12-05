@@ -34,7 +34,7 @@ def main():
         # experiment name based on file name
         orion.core.cli.main(
             ["hunt", "--config", algo_config_file, '-n', algo_name,
-                "--max-trials", "40", "--pool-size", "1",
+                "--max-trials", "20", "--pool-size", "1",
              "./rosenbrock.py", "-x~uniform(-10, 10, shape=2)", "-y~uniform(-10, 10)"])
 
     for algo_name, _ in get_algorithm_configs():

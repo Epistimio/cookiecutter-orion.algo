@@ -72,7 +72,7 @@ def test_set_state(space):
 def test_optimizer(database, monkeypatch):
     """Check functionality of BayesianOptimizer wrapper for single shaped dimension."""
     monkeypatch.chdir(os.path.dirname(os.path.abspath(__file__)))
-    orion.core.cli.main(["hunt", "--config",
+    orion.core.cli.main(["hunt", "--name", "exp", "--max-trials", "5", "--config",
                          "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",
                          "./benchmark/rosenbrock.py",
                          "-x~uniform(-5, 5)"])
@@ -82,8 +82,9 @@ def test_optimizer(database, monkeypatch):
 def test_int(database, monkeypatch):
     """Check support of integer values."""
     monkeypatch.chdir(os.path.dirname(os.path.abspath(__file__)))
-    orion.core.cli.main(["hunt", "--config",
-                         "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml", "./benchmark/rosenbrock.py",
+    orion.core.cli.main(["hunt", "--name", "exp", "--max-trials", "5", "--config",
+                         "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",
+                         "./benchmark/rosenbrock.py",
                          "-x~uniform(-5, 5, discrete=True)"])
 
 
@@ -91,7 +92,7 @@ def test_int(database, monkeypatch):
 def test_categorical(database, monkeypatch):
     """Check support of categorical values."""
     monkeypatch.chdir(os.path.dirname(os.path.abspath(__file__)))
-    orion.core.cli.main(["hunt", "--config",
+    orion.core.cli.main(["hunt", "--name", "exp", "--max-trials", "5", "--config",
                          "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",
                          "./benchmark/rosenbrock.py",
                          "-x~choices([-5, -2, 0, 2, 5])"])
@@ -101,7 +102,7 @@ def test_categorical(database, monkeypatch):
 def test_optimizer_two_inputs(database, monkeypatch):
     """Check functionality of BayesianOptimizer wrapper for 2 dimensions."""
     monkeypatch.chdir(os.path.dirname(os.path.abspath(__file__)))
-    orion.core.cli.main(["hunt", "--config",
+    orion.core.cli.main(["hunt", "--name", "exp", "--max-trials", "5", "--config",
                          "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",
                          "./benchmark/rosenbrock.py",
                          "-x~uniform(-5, 5)", "-y~uniform(-10, 10)"])
@@ -112,13 +113,14 @@ def test_optimizer_actually_optimize(database, monkeypatch):
     """Check if Bayesian Optimizer has better optimization than random search."""
     monkeypatch.chdir(os.path.dirname(os.path.abspath(__file__)))
     best_random_search = 23.403275057472825
-    orion.core.cli.main(["hunt", "--max-trials", "40", "--config",
+    orion.core.cli.main(["hunt", "--name", "exp", "--max-trials", "20", "--config",
                          "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",
                          "./benchmark/rosenbrock.py",
                          "-x~uniform(-50, 50)"])
 
-    with open("./orion_config_bayes.yaml", "r") as f:
-        exp = ExperimentBuilder().build_view_from({'config': f})
+    with open("./benchmark/{{ cookiecutter.algo_name|lower }}.yaml", "r") as f:
+        exp = ExperimentBuilder().build_view_from(
+            {'name': 'exp', 'config': f})
 
     objective = exp.stats['best_evaluation']
 

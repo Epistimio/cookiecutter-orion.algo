@@ -30,7 +30,7 @@ setup_args = dict(
             '{{ cookiecutter.plugin_name }}_{{ cookiecutter.algo_name }} = orion.algo.{{ cookiecutter.plugin_name }}.{{ cookiecutter.algo_module_name }}:{{cookiecutter.algo_name }}'
             ],
         },
-    install_requires=['orion.core'],
+    install_requires=['orion'],
     tests_require=tests_require,
     setup_requires=['setuptools', 'pytest-runner>=2.0,<3dev'],
     extras_require=dict(test=tests_require),
