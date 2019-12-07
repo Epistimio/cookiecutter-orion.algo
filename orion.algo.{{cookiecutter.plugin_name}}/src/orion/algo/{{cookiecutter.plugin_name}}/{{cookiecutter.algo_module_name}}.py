@@ -9,6 +9,8 @@
 
 TODO: Write long description
 """
+import numpy
+
 from orion.algo.base import BaseAlgorithm
 
 
@@ -17,11 +19,11 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
     TODO: Class docstring
     """
 
-    def __init__(self, space):
+    def __init__(self, space, seed=None):
         """
         TODO: init docstring
         """
-        super({{ cookiecutter.algo_name }}, self).__init__(space)
+        super({{ cookiecutter.algo_name }}, self).__init__(space, seed=seed)
 
     def seed_rng(self, seed):
         """Seed the state of the random number generator.
@@ -30,19 +32,23 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
 
         .. note:: This methods does nothing if the algorithm is deterministic.
         """
-        pass
+        # TODO: Adapt this to your algo
+        self.rng = numpy.random.RandomState(seed)
 
     @property
     def state_dict(self):
         """Return a state dict that can be used to reset the state of the algorithm."""
-        return {}
+        # TODO: Adapt this to your algo
+        return {'rng_state': self.rng.get_state()}
 
     def set_state(self, state_dict):
         """Reset the state of the algorithm based on the given state_dict
 
         :param state_dict: Dictionary representing state of an algorithm
         """
-        pass
+        # TODO: Adapt this to your algo
+        self.seed_rng(0)
+        self.rng.set_state(state_dict['rng_state'])
 
     def suggest(self, num=1):
         """Suggest a `num`ber of new sets of parameters.
@@ -66,7 +72,8 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
         New parameters must be compliant with the problem's domain `orion.algo.space.Space`.
 
         """
-        raise NotImplementedError
+         # TODO: Adapt this to your algo       
+        return self.space.sample(num, seed=tuple(self.rng.randint(0, 1000000, size=3)))
 
     def observe(self, points, results):
         """Observe evaluation `results` corresponding to list of `points` in
@@ -95,25 +102,26 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
            or equal to zero by the problem's definition.
 
         """
-        raise NotImplementedError
+        # TODO: Adapt this to your algo
+        pass
 
     @property
     def is_done(self):
         """Return True, if an algorithm holds that there can be no further improvement."""
         # NOTE: Drop if not used by algorithm
-        raise NotImplementedError
+        pass
 
     def score(self, point):
         """Allow algorithm to evaluate `point` based on a prediction about
         this parameter set's performance.
         """
         # NOTE: Drop if not used by algorithm
-        raise NotImplementedError
+        pass
 
     def judge(self, point, measurements):
         """Inform an algorithm about online `measurements` of a running trial."""
         # NOTE: Drop if not used by algorithm
-        raise NotImplementedError
+        pass
 
     @property
     def should_suspend(self):
@@ -123,4 +131,4 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
 
         """
         # NOTE: Drop if not used by algorithm
-        raise NotImplementedError
+        pass
