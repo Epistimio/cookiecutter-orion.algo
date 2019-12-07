@@ -21,6 +21,8 @@ cookiecutter . -vvv --no-input \
 
 cd orion.algo.my_plugin
 pip install -r dev-requirements.txt
+tox -e flake8
+tox -e pylint
 tox -e py36
 tox -e benchmark
 cd ..
