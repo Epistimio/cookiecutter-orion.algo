@@ -141,16 +141,108 @@ Implementation
 
 Explain what to do.
 
+.. code-block:: python
+
+    def seed_rng(self, seed):
+
 Explain main points. Algo must be copiable with get_state, set_state, seedable, etc.
 
+
+.. code-block:: python
+
+    @property
+    def state_dict(self):
+
+The state dict is used to copy algorithms within the parallel strategy. All algorithms must provide
+a state dict to ensure that we reset it to a previous state.
+
+.. code-block:: python
+
+    def set_state(self, state_dict):
+
+Stateful attributes of the algorithm are reset using the given ``state_dict``. Note that
+``set_state`` must be compliant with ``state_dict`` and use
+the same structure.
+
+.. code-block:: python
+
+    def suggest(self, num=1):
+
+The method to suggest new trials. The argument ``num=1``
+request the number of trials that the algorithm must sample. Note that it is possible to only
+support ``num=1`` and raise ValueError otherwise.
+
+.. code-block:: python
+
+    def observe(self, points, results):
+
+The method to observe results of suggested trials. Note that observe may be called several times for
+the same points. Make sure to handle this properly within your algorithm if this is problematic.
+Points are passed as a list of lists, each list representing the value of the params in the order
+defined in ``self.space``
+
+
+TODO Give explanation of what is passed in builder (space, seed, etc)
+ also how does it work to define now arugmnets? That's confusing!
+
+TODO: Give explanation for the attribute ``requires``.
 
 Tests
 =====
 
-How do we test?
+To test the freshly built package, you must first install the requirements. From within the new
+package, run
 
+.. code-block:: console
+
+    $ pip install -r tests/requirements.txt
+
+You can then run the unit-tests with 
+
+.. code-block:: console
+
+    $ pytest tests/integration_test.py
+
+or using ``tox``
+
+.. code-block:: console
+
+    $ tox -e py36
+
+Note that the algorithm pre-built is random search so that you can start from a fully working
+environment and test your way through the modifications.
+
+There is also the option of running the toy-benchmark to compare the performance of your algorithm
+with random search and bayesian optimization. First install the requirements.
+
+.. code-block:: console
+
+    $ pip install -r tests/benchmark/requirements.txt
+
+And then execute the benchmark
+
+.. code-block:: console
+
+    $ pytest tests/benchmark/main.py
+
+or using ``tox``
+
+.. code-block:: console
+
+    $ tox -e benchmark
+
+TODO Setup tox and travis in cookiecutter to test the pre-built tests
+
+TODO 
+1. Verify tox in cookiecutter
+2. Confirm benchmark --no-xserver works
+3. Verify tox in template
+4. Try transfering command in cookiecutter-tox to template-tox (instead of pytest and python
+   benchmark/main.py directly, use tox -e py36 and tox -e benchmark)
+5. Push to repo and set Travis for cookiecutter
 
 Contribute
 ==========
 
+TODO
 How do I get my algo moved into github.org/Epistimio to make it an official plugin?
