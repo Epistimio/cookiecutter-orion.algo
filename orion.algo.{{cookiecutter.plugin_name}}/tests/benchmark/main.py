@@ -1,14 +1,11 @@
+import argparse
 import glob
 import os
-import matplotlib.pyplot as plt 
 
 
 import orion.core.cli
 from orion.core.io.experiment_builder import ExperimentBuilder
 
-
-# train random, baye + current algo
-# plot evolution...
 
 database_config = { 
     "type": 'EphemeralDB'}
@@ -24,7 +21,20 @@ def get_algorithm_configs():
         yield name, file_name
 
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--no-xserver', action='store_true',
+                        help='Do not show results with matplotlib')
+
+    options = parser.parse_args(argv)
+
+    execute_simulations()
+
+    plot(no_xserver=options.no_xserver)
+
+
+def execute_simulations():
+
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
     for algo_name, algo_config_file in get_algorithm_configs():
@@ -37,6 +47,13 @@ def main():
                 "--max-trials", "20", "--pool-size", "1",
              "./rosenbrock.py", "-x~uniform(-10, 10, shape=2)", "-y~uniform(-10, 10)"])
 
+
+def plot(no_xserver=False):
+    if no_xserver:
+        import matplotlib
+        matplotlib.use('agg')
+
+    import matplotlib.pyplot as plt
     for algo_name, _ in get_algorithm_configs():
 
         experiment = ExperimentBuilder().build_view_from(
