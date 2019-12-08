@@ -242,3 +242,17 @@ or using ``tox``
 .. code-block:: console
 
     $ tox -e benchmark
+
+Finally, official plugins must follow the same code quality standards than ``orion.core``. Therefore
+there is tests included in the pre-built package for ``flake8`` and ``pylint``. You can execute them
+with
+
+.. code-block:: console
+
+    $ tox -e flake8
+
+and
+
+.. code-block:: console
+
+    $ tox -e pylint
