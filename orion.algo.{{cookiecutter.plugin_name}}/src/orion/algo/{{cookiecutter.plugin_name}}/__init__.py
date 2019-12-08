@@ -9,13 +9,8 @@
 
 TODO: Write long description
 """
-from ._version import get_versions
-
-VERSIONS = get_versions()
-del get_versions
 
 __descr__ = '{{ cookiecutter.short_description }}'
-__version__ = VERSIONS['version']
 __license__ = 'BSD 3-Clause'
 __author__ = u'{{ cookiecutter.author_name }}'
 __author_short__ = u'{{ cookiecutter.author_short }}'

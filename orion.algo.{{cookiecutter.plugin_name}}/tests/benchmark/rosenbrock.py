@@ -8,7 +8,7 @@ import numpy
 from orion.client import report_results
 
 
-def rosenbrock_function(x, y): 
+def rosenbrock_function(x, y):
     """Evaluate a n-D rosenbrock function."""
     x = numpy.asarray(x)
     summands = 100 * (x[1:] - x[:-1]**2)**2 + (1 - x[:-1])**2

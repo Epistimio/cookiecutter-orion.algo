@@ -73,7 +73,7 @@ def test_optimizer(monkeypatch):
     """Check functionality of BayesianOptimizer wrapper for single shaped dimension."""
     monkeypatch.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    with OrionState(experiments=[], trials=[]) as cfg:
+    with OrionState(experiments=[], trials=[]):
 
         orion.core.cli.main(["hunt", "--name", "exp", "--max-trials", "5", "--config",
                              "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",
@@ -85,7 +85,7 @@ def test_int(monkeypatch):
     """Check support of integer values."""
     monkeypatch.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    with OrionState(experiments=[], trials=[]) as cfg:
+    with OrionState(experiments=[], trials=[]):
 
         orion.core.cli.main(["hunt", "--name", "exp", "--max-trials", "5", "--config",
                              "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",
@@ -97,7 +97,7 @@ def test_categorical(monkeypatch):
     """Check support of categorical values."""
     monkeypatch.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    with OrionState(experiments=[], trials=[]) as cfg:
+    with OrionState(experiments=[], trials=[]):
 
         orion.core.cli.main(["hunt", "--name", "exp", "--max-trials", "5", "--config",
                              "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",
@@ -109,7 +109,7 @@ def test_optimizer_two_inputs(monkeypatch):
     """Check functionality of BayesianOptimizer wrapper for 2 dimensions."""
     monkeypatch.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    with OrionState(experiments=[], trials=[]) as cfg:
+    with OrionState(experiments=[], trials=[]):
 
         orion.core.cli.main(["hunt", "--name", "exp", "--max-trials", "5", "--config",
                              "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",
@@ -122,7 +122,7 @@ def test_optimizer_actually_optimize(monkeypatch):
     monkeypatch.chdir(os.path.dirname(os.path.abspath(__file__)))
     best_random_search = 23.403275057472825
 
-    with OrionState(experiments=[], trials=[]) as cfg:
+    with OrionState(experiments=[], trials=[]):
 
         orion.core.cli.main(["hunt", "--name", "exp", "--max-trials", "20", "--config",
                              "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",

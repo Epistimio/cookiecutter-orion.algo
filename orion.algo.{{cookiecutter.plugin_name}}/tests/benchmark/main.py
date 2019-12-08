@@ -1,27 +1,27 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""Benchmark all algorithms on the rosenbrock function."""
 import argparse
 import glob
 import os
-
 
 import orion.core.cli
 from orion.core.io.experiment_builder import ExperimentBuilder
 
 
-database_config = { 
+database_config = {
     "type": 'EphemeralDB'}
 
 
-def order(trial):
-    return trial.submit_time
-
-
 def get_algorithm_configs():
+    """Read the algorihm configuration from available files"""
     for file_name in glob.glob('*.yaml'):
         name, _ = os.path.splitext(file_name)
         yield name, file_name
 
 
 def main(argv=None):
+    """Execute the benchmark with cli"""
     parser = argparse.ArgumentParser()
     parser.add_argument('--no-xserver', action='store_true',
                         help='Do not show results with matplotlib')
@@ -34,7 +34,7 @@ def main(argv=None):
 
 
 def execute_simulations():
-
+    """Execute the simulation for each available algorithm configuration"""
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
     for algo_name, algo_config_file in get_algorithm_configs():
@@ -49,6 +49,7 @@ def execute_simulations():
 
 
 def plot(no_xserver=False):
+    """Plot the evolution of the best objective for each algorithm"""
     if no_xserver:
         import matplotlib
         matplotlib.use('agg')
@@ -60,7 +61,11 @@ def plot(no_xserver=False):
             {"name": algo_name, "database": database_config})
 
         objectives = []
-        for trial in sorted(experiment.fetch_trials({'status': 'completed'}), key=order):
+        sorted_trials = sorted(
+            experiment.fetch_trials({'status': 'completed'}),
+            key=lambda trial: trial.submit_time)
+
+        for trial in sorted_trials:
             objectives.append(min([trial.objective.value] + objectives))
 
         plt.plot(range(len(objectives)), objectives, label=algo_name)

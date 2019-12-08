@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-:mod:`orion.algo.{{ cookiecutter.plugin_name }}.{{ cookiecutter.algo_module_name }} -- TODO 
+:mod:`orion.algo.{{ cookiecutter.plugin_name }}.{{ cookiecutter.algo_module_name }} -- TODO
 ======================{{ '=' * cookiecutter.plugin_name|length }}==================
 
 .. module:: {{ cookiecutter.algo_module_name }}
@@ -15,14 +15,9 @@ from orion.algo.base import BaseAlgorithm
 
 
 class {{ cookiecutter.algo_name }}(BaseAlgorithm):
-    """
-    TODO: Class docstring
-    """
+    """TODO: Class docstring"""
 
     def __init__(self, space, seed=None):
-        """
-        TODO: init docstring
-        """
         super({{ cookiecutter.algo_name }}, self).__init__(space, seed=seed)
 
     def seed_rng(self, seed):
@@ -72,7 +67,7 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
         New parameters must be compliant with the problem's domain `orion.algo.space.Space`.
 
         """
-         # TODO: Adapt this to your algo       
+        # TODO: Adapt this to your algo
         return self.space.sample(num, seed=tuple(self.rng.randint(0, 1000000, size=3)))
 
     def observe(self, points, results):
