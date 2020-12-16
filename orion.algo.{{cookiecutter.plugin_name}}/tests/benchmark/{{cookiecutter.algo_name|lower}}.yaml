@@ -1,6 +1,9 @@
-algorithms:
-  {{cookiecutter.algo_name}}: {}
-    # NOTE: Add arguments here if necessary
+experiment:
+    name: orion_{{ cookiecutter.algo_name|lower }}_test
+    max_trials: 5
+    algorithms:
+      {{cookiecutter.algo_name}}: {}
+        # NOTE: Add arguments here if necessary
 
 database:
   type: 'EphemeralDB'
