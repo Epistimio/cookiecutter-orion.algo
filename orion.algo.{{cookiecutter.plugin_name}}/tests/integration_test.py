@@ -178,7 +178,6 @@ def test_optimizer_actually_optimize(monkeypatch):
                 "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",
                 "--exp-max-trials",
                 "10",  # NOTE: You may increase to 50 or 100 trials to give a chance to your algo
-                "python",
                 "./benchmark/rosenbrock.py",
                 "-x~uniform(-50, 50)",
             ]

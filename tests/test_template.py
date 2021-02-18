@@ -42,10 +42,10 @@ def main():
         chdir(join(tmpdir, f"orion.algo.{config['plugin_name']}"))
         create("venv", with_pip=True)
         path = join("venv", "bin")
-        pip = which("pip", path=path) or "pip"  # Travis CI workaround
+        pip = which("pip", path=path) or "pip"  # GH CI workaround
         check_call(split(f"{pip} install -e ."))
         check_call(split(f"{pip} install -r tests/requirements.txt"))
-        pytest = which("pytest", path=path) or "pytest"  # Travis CI workaround
+        pytest = which("pytest", path=path) or "pytest"  # GH CI workaround
         test = "{:s} --verbose tests".format(pytest)
         check_call(split(test))
     return 0
