@@ -13,7 +13,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  pretest:
   test:
     runs-on: ${{ matrix.platform }}
     strategy:
