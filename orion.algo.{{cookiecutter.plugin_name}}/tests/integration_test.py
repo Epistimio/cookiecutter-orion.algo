@@ -3,6 +3,7 @@
 # pylint:disable=invalid-name
 """Perform integration tests for `orion.algo.{{ cookiecutter.plugin_name }}`."""
 import os
+from shutil import which
 
 import numpy
 import orion.core.cli
@@ -165,6 +166,11 @@ def test_optimizer_two_inputs(monkeypatch):
 
 def test_optimizer_actually_optimize(monkeypatch):
     """Check if Bayesian Optimizer has better optimization than random search."""
+    # NOTE: You can remove the two lines below, they are only required for testing the cookiecutter
+    path = os.path.abspath(os.path.join("venv", "bin"))
+    python = which("python", path=path) or "python"
+    ## End of GH CI workaround
+
     monkeypatch.chdir(os.path.dirname(os.path.abspath(__file__)))
     best_random_search = 23.403275057472825
 
@@ -178,6 +184,7 @@ def test_optimizer_actually_optimize(monkeypatch):
                 "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",
                 "--exp-max-trials",
                 "10",  # NOTE: You may increase to 50 or 100 trials to give a chance to your algo
+                python,
                 "./benchmark/rosenbrock.py",
                 "-x~uniform(-50, 50)",
             ]
