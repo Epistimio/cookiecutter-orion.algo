@@ -46,9 +46,9 @@ def main():
         create("venv", with_pip=True)
         path = join("venv", "bin")
         pip = which("pip", path=path) or "pip"  # Travis CI workaround
-        install = f"{pip} install . -r tests/requirements.txt"
         print(install)
-        check_call(split(install))
+        check_call(split(f"{pip} install -e ."))
+        check_call(split(f"{pip} install -r tests/requirements.txt"))
         pytest = which("pytest", path=path) or "pytest"  # Travis CI workaround
         test = "{:s} --verbose tests".format(pytest)
         check_call(split(test))
