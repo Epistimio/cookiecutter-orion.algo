@@ -35,18 +35,14 @@ def main():
     """Execute the test."""
     template = dirname(dirname(abspath(__file__)))
     defaults = load(open(join(template, "cookiecutter.json")))
-    print(defaults)
     with TemporaryDirectory() as tmpdir:
         chdir(tmpdir)
-        print(template)
-        print(tmpdir)
         check_call(split("ls -la"))
         cookiecutter(template, no_input=True, extra_context=config)
         chdir(join(tmpdir, f"orion.algo.{config['plugin_name']}"))
         create("venv", with_pip=True)
         path = join("venv", "bin")
         pip = which("pip", path=path) or "pip"  # Travis CI workaround
-        print(install)
         check_call(split(f"{pip} install -e ."))
         check_call(split(f"{pip} install -r tests/requirements.txt"))
         pytest = which("pytest", path=path) or "pytest"  # Travis CI workaround
