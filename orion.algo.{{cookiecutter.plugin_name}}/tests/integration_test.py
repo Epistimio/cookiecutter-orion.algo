@@ -8,9 +8,9 @@ import numpy
 import orion.core.cli
 import pytest
 from orion.algo.space import Integer, Real, Space
-from orion.client import create_experiment
-from orion.core.utils.tests import OrionState
+from orion.client import get_experiment
 from orion.core.worker.primary_algo import PrimaryAlgo
+from orion.testing.state import OrionState
 
 
 # pylint:disable=unused-argument
@@ -172,18 +172,22 @@ def test_optimizer_actually_optimize(monkeypatch):
 
         orion.core.cli.main(
             [
+                "-vvv",
                 "hunt",
                 "--config",
                 "./benchmark/{{ cookiecutter.algo_name|lower }}.yaml",
+                "--exp-max-trials",
+                "10",  # NOTE: You may increase to 50 or 100 trials to give a chance to your algo
+                "python",
                 "./benchmark/rosenbrock.py",
-                "--max-trials",
-                100,
                 "-x~uniform(-50, 50)",
             ]
         )
 
-        exp = create_experiment(name="exp")
+        exp = get_experiment(name="orion_{{ cookiecutter.algo_name|lower }}_test")
 
         objective = exp.stats["best_evaluation"]
 
-        assert best_random_search > objective
+        # NOTE: Remove `* 2` for a tighter bound. This one is only
+        #       for testing the cookiecutter template.
+        assert objective < best_random_search * 2

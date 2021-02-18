@@ -17,6 +17,10 @@ from orion.algo.base import BaseAlgorithm
 class {{ cookiecutter.algo_name }}(BaseAlgorithm):
     """TODO: Class docstring"""
 
+    requires_type = None
+    requires_dist = None
+    requires_shape = None
+
     def __init__(self, space, seed=None):
         super({{ cookiecutter.algo_name }}, self).__init__(space, seed=seed)
 

@@ -33,7 +33,7 @@
 
 ----
 
-This `orion.algo`_ plugin was generated with `Cookiecutter`_ along with `@Epistimio`_'s `cookiecutter-orion.algo`_ template.
+This ``orion.algo`` plugin was generated with `Cookiecutter`_ along with `@Epistimio`_'s `cookiecutter-orion.algo`_ template.
 
 
 Features

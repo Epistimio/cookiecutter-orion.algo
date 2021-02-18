@@ -19,30 +19,42 @@ from venv import create
 
 from cookiecutter.main import cookiecutter
 
+
+config = dict(
+    plugin_name="test_plugin",
+    author_name="John Doe",
+    author_short="John Doe",
+    author_email="john@doe.com",
+    github_username="johndoe",
+    algo_name="TestAlgo",
+    algo_module_name="test_algo",
+)
+
+
 def main():
-    """ Execute the test.
-    
-    """
+    """Execute the test."""
     template = dirname(dirname(abspath(__file__)))
     defaults = load(open(join(template, "cookiecutter.json")))
+    print(defaults)
     with TemporaryDirectory() as tmpdir:
         chdir(tmpdir)
-        cookiecutter(template, no_input=True)
-        chdir(join(tmpdir, defaults["project_slug"]))
+        print(template)
+        print(tmpdir)
+        check_call(split("ls -la"))
+        cookiecutter(template, no_input=True, extra_context=config)
+        chdir(join(tmpdir, f"orion.algo.{config['plugin_name']}"))
         create("venv", with_pip=True)
         path = join("venv", "bin")
         pip = which("pip", path=path) or "pip"  # Travis CI workaround
-        install = "{:s} install .".format(pip)
-        for req in (join(root, "requirements.txt") for root in (".", "test")):
-            # Add each requirements file to the install.
-            install = " ".join((install, "--requirement={:s}".format(req)))
+        install = f"{pip} install . -r tests/requirements.txt"
+        print(install)
         check_call(split(install))
         pytest = which("pytest", path=path) or "pytest"  # Travis CI workaround
-        test = "{:s} --verbose test".format(pytest)
+        test = "{:s} --verbose tests".format(pytest)
         check_call(split(test))
     return 0
-    
-    
+
+
 # Make the script executable.
 
 if __name__ == "__main__":
