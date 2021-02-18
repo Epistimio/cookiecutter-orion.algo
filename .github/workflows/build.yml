@@ -23,6 +23,10 @@ jobs:
     env:
       PLATFORM: ${{ matrix.platform }}
     steps:
+    - name: Setup git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
     - uses: actions/checkout@v1
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
