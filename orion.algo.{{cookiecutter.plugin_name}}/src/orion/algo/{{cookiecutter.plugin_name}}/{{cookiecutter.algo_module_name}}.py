@@ -38,7 +38,7 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
     def state_dict(self):
         """Return a state dict that can be used to reset the state of the algorithm."""
         # TODO: Adapt this to your algo
-        return {'rng_state': self.rng.get_state()}
+        return {'rng_state': self.rng.get_state(), "_trials_info": copy.deepcopy(self._trials_info)}
 
     def set_state(self, state_dict):
         """Reset the state of the algorithm based on the given state_dict
@@ -48,6 +48,7 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
         # TODO: Adapt this to your algo
         self.seed_rng(0)
         self.rng.set_state(state_dict['rng_state'])
+        self._trials_info = state_dict.get("_trials_info")
 
     def suggest(self, num=1):
         """Suggest a `num`ber of new sets of parameters.
