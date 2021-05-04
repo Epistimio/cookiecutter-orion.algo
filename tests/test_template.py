@@ -46,7 +46,7 @@ def main():
         check_call(split(f"{pip} install -e ."))
         check_call(split(f"{pip} install -r tests/requirements.txt"))
         pytest = which("pytest", path=path) or "pytest"  # GH CI workaround
-        test = "{:s} --verbose tests".format(pytest)
+        test = "{:s} --verbose tests -x".format(pytest)
         check_call(split(test))
     return 0
 

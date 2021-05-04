@@ -17,7 +17,7 @@ from orion.testing.algo import BaseAlgoTests
 # for examples of customized tests.
 class Test{{ cookiecutter.algo_name }}(BaseAlgoTests):
 
-    algo_name = {{ cookiecutter.algo_name|lower }}
+    algo_name = "{{ cookiecutter.algo_name|lower }}"
     config = {
         "seed": 1234,  # Because this is so random
         # Add other arguments for your algorithm to pass test_configuration

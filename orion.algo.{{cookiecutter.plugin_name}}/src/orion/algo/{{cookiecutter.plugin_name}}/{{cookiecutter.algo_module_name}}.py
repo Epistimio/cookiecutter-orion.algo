@@ -9,6 +9,8 @@
 
 TODO: Write long description
 """
+import copy
+
 import numpy
 
 from orion.algo.base import BaseAlgorithm
@@ -58,7 +60,8 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
         Parameters
         ----------
         num: int, optional
-            Number of points to suggest. Defaults to 1.
+            Number of points to suggest. Defaults to None, in which case the algorithms
+            returns the number of points it considers most optimal.
 
         Returns
         -------
@@ -73,7 +76,18 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
 
         """
         # TODO: Adapt this to your algo
-        return self.space.sample(num, seed=tuple(self.rng.randint(0, 1000000, size=3)))
+        if num is None:
+            num = 1
+
+        points = []
+        while len(points) < num:
+            seed = tuple(self.rng.randint(0, 1000000, size=3))
+            new_point = self.space.sample(1, seed=seed)[0]
+            if not self.has_suggested(new_point):
+                self.register(new_point)
+                points.append(new_point)
+
+        return points
 
     def observe(self, points, results):
         """Observe evaluation `results` corresponding to list of `points` in
@@ -102,14 +116,14 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
            or equal to zero by the problem's definition.
 
         """
-        # TODO: Adapt this to your algo
-        pass
+        # TODO: Adapt this to your algo or remove if base implementation is fine.
+        super({{ cookiecutter.algo_name }}, self).observe(points, results)
 
     @property
     def is_done(self):
         """Return True, if an algorithm holds that there can be no further improvement."""
-        # NOTE: Drop if not used by algorithm
-        pass
+        # NOTE: Drop if base implementation is fine.
+        return super({{ cookiecutter.algo_name }}, self).is_done
 
     def score(self, point):
         """Allow algorithm to evaluate `point` based on a prediction about
