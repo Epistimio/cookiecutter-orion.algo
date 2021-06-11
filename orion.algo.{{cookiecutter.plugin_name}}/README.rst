@@ -51,15 +51,11 @@ Requirements
 Installation
 ------------
 
-You can install "orion.algo.{{cookiecutter.plugin_name}}" via `pip`_ from `PyPI`_::
+You can install ``orion.algo.{{cookiecutter.plugin_name}}`` via `pip`_ from `PyPI`_
+
+.. code-block:: console
 
     $ pip install git+https://github.com/{{ cookiecutter.github_username }}/orion.algo.{{cookiecutter.plugin_name}}.git
-
-
-Usage
------
-
-* TODO
 
 
 Contribute or Ask
@@ -87,7 +83,7 @@ License
 -------
 
 Distributed under the terms of the BSD-3-Clause license,
-"orion.algo.{{cookiecutter.plugin_name}}" is free and open source software.
+``orion.algo.{{cookiecutter.plugin_name}}`` is free and open source software.
 
 
 .. _`Cookiecutter`: https://github.com/audreyr/cookiecutter
