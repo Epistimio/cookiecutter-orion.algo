@@ -11,6 +11,7 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
+import re
 import sys
 import os
 import shlex
@@ -36,14 +37,15 @@ import orion.algo.{{ cookiecutter.plugin_name }} as algo_plugin
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.extlinks',
-    'sphinx.ext.autosummary',
-    'numpydoc',
+    "numpydoc",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.coverage",
+    "sphinx.ext.doctest",
+    "sphinx.ext.extlinks",
+    "sphinx.ext.todo",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.intersphinx",
 ]
 
 
@@ -332,7 +334,7 @@ autodoc_mock_imports = ['_version', 'utils._appdirs']
 ################################################################################
 
 # sphinx.ext.autosummary will automatically be loaded as well. So:
-autosummary_generate = glob.glob("reference/*.rst")
+# autosummary_generate = glob.glob("reference/*.rst")
 
 # Generate ``plot::`` for ``Examples`` sections which contain matplotlib
 numpydoc_use_plots = False
@@ -341,3 +343,5 @@ numpydoc_use_plots = False
 # attributes. If a table of contents is made, Sphinx expects each entry to have
 # a separate page.
 numpydoc_class_members_toctree = False
+
+numpydoc_show_inherited_class_members = False
