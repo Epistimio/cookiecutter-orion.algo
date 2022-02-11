@@ -46,6 +46,7 @@ def remove_temp_folders(temp_folders):
         logger.info("Remove temporary folder: %s", folder)
         shutil.rmtree(folder)
 
+
 def init_vcs():
     subprocess.run("git init", shell=True, check=True)
     subprocess.run("git add --all", shell=True, check=True)
@@ -56,8 +57,14 @@ def run_versioneer():
     subprocess.run("git commit -m 'Creation with cookiecutter'", shell=True, check=True)
 
 
+def blackify():
+    subprocess.run("black .", shell=True, check=True)
+    subprocess.run("git commit -a -m 'Format with black'", shell=True, check=True)
+
+
 if __name__ == "__main__":
     # move_docs_files("\{\{cookiecutter.docs_tool\}\}", DOCS_FILES_BY_TOOL, DOCS_SOURCES)
     remove_temp_folders(ALL_TEMP_FOLDERS)
     init_vcs()
     run_versioneer()
+    blackify()

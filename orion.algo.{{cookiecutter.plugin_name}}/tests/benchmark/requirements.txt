@@ -1,2 +1,0 @@
-orion.algo.skopt
-matplotlib

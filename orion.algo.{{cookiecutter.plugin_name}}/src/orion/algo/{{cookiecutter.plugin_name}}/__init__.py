@@ -13,8 +13,3 @@ __author_short__ = u"{{ cookiecutter.author_short }}"
 __author_email__ = "{{ cookiecutter.author_email }}"
 __copyright__ = u"{{ cookiecutter.copyright }}"
 __url__ = "https://github.com/{{ cookiecutter.github_username }}/orion.algo.{{ cookiecutter.plugin_name }}"
-
-from ._version import get_versions
-
-__version__ = get_versions()["version"]
-del get_versions
