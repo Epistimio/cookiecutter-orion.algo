@@ -1,11 +1,6 @@
-# -*- coding: utf-8 -*-
 """
 :mod:`orion.algo.{{ cookiecutter.plugin_name }}.{{ cookiecutter.algo_module_name }} -- TODO
 ======================{{ '=' * cookiecutter.plugin_name|length }}==================
-
-.. module:: {{ cookiecutter.algo_module_name }}
-    :platform: Unix
-    :synopsis: {{ cookiecutter.synopsis }}
 
 TODO: Write long description
 """

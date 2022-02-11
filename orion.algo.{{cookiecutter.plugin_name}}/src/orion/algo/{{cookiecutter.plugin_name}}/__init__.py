@@ -3,10 +3,6 @@
 :mod:`orion.algo.{{ cookiecutter.plugin_name }} -- {{ cookiecutter.short_description }}
 ======================{{ '=' * cookiecutter.plugin_name|length }}===={{ '=' * cookiecutter.short_description|length }}
 
-.. module:: {{ cookiecutter.plugin_name }}
-    :platform: Unix
-    :synopsis: {{ cookiecutter.synopsis }}
-
 TODO: Write long description
 """
 
