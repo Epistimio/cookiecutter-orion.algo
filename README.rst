@@ -27,7 +27,7 @@ Install Python requirements to use the template:
 
 .. code-block:: console
 
-    $ python -m pip install cookiecutter>=1.5 versioneer>=0.18 jinja2
+    $ pip install -r requirements.txt
 
 
 Create a new project directly from the template on `GitHub`_:
@@ -40,7 +40,7 @@ Create a new project directly from the template on `GitHub`_:
     author_short [Author Name]:
     author_email []: xavier.bouthillier@umontreal.ca
     github_username []: bouthilx
-    copyright [2019, Author Name]:
+    copyright [2021, Author Name]:
     short_description [TODO]:
     algo_name []: BayesianOptimizer
     algo_module_name [bayesianoptimizer]: bayes
@@ -89,13 +89,7 @@ This will create the following package structure.
     ├── tests
     │   ├── requirements.txt
     │   ├── integration_test.py
-    │   └── benchmark
-    │       ├── requirements.txt
-    │       ├── main.py
-    │       ├── rosenbrock.py
-    │       ├── {algoname}.yaml
-    │       ├── bayesopt.yaml
-    │       └── random_search.yaml
+    │   └── benchmark.py
     └── src
         └── orion
             └── algo
