@@ -237,13 +237,13 @@ was already suggested to make sure trials returned by ``suggest()`` are new ones
 Before returning a new trial, make sure to register it with ``self.register(trial)``
 so that ``self.has_suggested(trial)`` works properly.
 
-.. tip::
-
-   Utility functions in `format_trials`_ are convenient to convert sets of hyperparameters
-   from dictionary format or list of values to ``Trial`` objects.
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Tip                                                                                                                                                    |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Utility functions in `format_trials`_ are convenient to convert sets of hyperparameters from dictionary format or list of values to ``Trial`` objects. |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. _format_trials: https://orion.readthedocs.io/en/stable/code/core/utils/format_trials.html
-
 
 
 +--------------------------------------+-------------+
