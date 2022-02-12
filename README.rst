@@ -204,13 +204,13 @@ an example using the original space.
 .. _skopt's implementation: https://github.com/Epistimio/orion.algo.skopt/blob/master/src/orion/algo/skopt/bayes.py
 
 
-+--------------------------------------+-------------+
-| Tests that should pass at this point | Description |
-+--------------------------------------+-------------+
-| ``test_get_id``                      |             |
-+--------------------------------------+-------------+
-| ``test_configuration``               |             |
-+--------------------------------------+-------------+
++--------------------------------------+-----------------------------------------------------------+
+| Tests that should pass at this point | Description                                               |
++--------------------------------------+-----------------------------------------------------------+
+| ``test_get_id``                      | Test that id of trial is computed properly.               |
++--------------------------------------+-----------------------------------------------------------+
+| ``test_configuration``               | Test that configuration contains all expected attributes. |
++--------------------------------------+-----------------------------------------------------------+
 
 
 .. _build_required_space: https://orion.readthedocs.io/en/stable/code/core/worker/transformer.html#orion.core.worker.transformer.build_required_space
@@ -253,15 +253,16 @@ so that ``self.has_suggested(trial)`` works properly.
 
 .. _format_trials: https://orion.readthedocs.io/en/stable/code/core/utils/format_trials.html
 
-+--------------------------------------+-------------+
-| Tests that should pass at this point | Description |
-+--------------------------------------+-------------+
-| ``test_suggest_n``                   |             |
-+--------------------------------------+-------------+
-| ``test_has_suggested``               |             |
-+--------------------------------------+-------------+
-| ``test_n_suggested``                 |             |
-+--------------------------------------+-------------+
++--------------------------------------+------------------------------------------------------+
+| Tests that should pass at this point | Description                                          |
++--------------------------------------+------------------------------------------------------+
+| ``test_suggest_n``                   | Test that the algorithm is able to suggest n trials. |
++--------------------------------------+------------------------------------------------------+
+| ``test_has_suggested``               | Test that trials suggested are properly registered   |
++--------------------------------------+------------------------------------------------------+
+| ``test_n_suggested``                 | Test that trials suggested are properly registered   |
+|                                      | and counted.                                         |
++--------------------------------------+------------------------------------------------------+
 
 
 .. code-block:: python
@@ -295,27 +296,34 @@ All trials registered with ``self.register(trial)`` are stored in a dictionary
 
 .. _Trial: https://orion.readthedocs.io/en/stable/code/core/worker/trial.html#orion.core.worker.trial.Trial
 
-+--------------------------------------+-------------+
-| Tests that should pass at this point | Description |
-+--------------------------------------+-------------+
-| ``test_observe``                     |             |
-+--------------------------------------+-------------+
-| ``test_has_observed``                |             |
-+--------------------------------------+-------------+
-| ``test_n_observed``                  |             |
-+--------------------------------------+-------------+
-| ``test_cat_data``                    |             |
-+--------------------------------------+-------------+
-| ``test_int_data``                    |             |
-+--------------------------------------+-------------+
-| ``test_logint_data``                 |             |
-+--------------------------------------+-------------+
-| ``test_logreal_data``                |             |
-+--------------------------------------+-------------+
-| ``test_real_data``                   |             |
-+--------------------------------------+-------------+
-| ``test_shape_data``                  |             |
-+--------------------------------------+-------------+
++--------------------------------------+--------------------------------------------------------+
+| Tests that should pass at this point | Description                                            |
++--------------------------------------+--------------------------------------------------------+
+| ``test_observe``                     | Test that algorithm can observe without any expection. |
+|                                      | The validity of observe is not verified here.          |
++--------------------------------------+--------------------------------------------------------+
+| ``test_has_observed``                | Test that observed completed trials are registered     |
+|                                      | properly.                                              |
++--------------------------------------+--------------------------------------------------------+
+| ``test_n_observed``                  | Test that observed completed trials are registered     |
+|                                      | and counted properly.                                  |
++--------------------------------------+--------------------------------------------------------+
+| ``test_real_data``                   | Test that algorithm can work with float values.        |
++--------------------------------------+--------------------------------------------------------+
+| ``test_int_data``                    | Test that algorithm can suggest and observe            |
+|                                      | discrete values                                        |
++--------------------------------------+--------------------------------------------------------+
+| ``test_cat_data``                    | Test that algorithm can suggest and observe            |
+|                                      | categorical values                                     |
++--------------------------------------+--------------------------------------------------------+
+| ``test_logint_data``                 | Test that algorithm can work with discrete loguniform  |
+|                                      | dimensions.                                            |
++--------------------------------------+--------------------------------------------------------+
+| ``test_logreal_data``                | Test that algorithm can work with real loguniform      |
+|                                      | dimensions.                                            |
++--------------------------------------+--------------------------------------------------------+
+| ``test_shape_data``                  | Test that algorithm can work with arrays.              |
++--------------------------------------+--------------------------------------------------------+
 
 
 .. code-block:: python
@@ -328,13 +336,13 @@ sequence of points.
 You may need to seed global random number generators such as ``random`` or ``numpy.random`` if you
 are wrapping a third party library using them.
 
-+--------------------------------------+-------------+
-| Tests that should pass at this point | Description |
-+--------------------------------------+-------------+
-| ``test_seed_rng``                    |             |
-+--------------------------------------+-------------+
-| ``test_seed_rng_init``               |             |
-+--------------------------------------+-------------+
++--------------------------------------+---------------------------------------------------------+
+| Tests that should pass at this point | Description                                             |
++--------------------------------------+---------------------------------------------------------+
+| ``test_seed_rng``                    | Test that seeding the algorithm can be seeded properly. |
++--------------------------------------+---------------------------------------------------------+
+| ``test_seed_rng_init``               | Test that the algorithm is seeded during instantiation. |
++--------------------------------------+---------------------------------------------------------+
 
 .. code-block:: python
 
@@ -356,15 +364,16 @@ Stateful attributes of the algorithm are reset using the given ``state_dict``. N
 ``set_state`` must be compliant with ``state_dict`` and use
 the same structure.
 
-+--------------------------------------+-------------+
-| Tests that should pass at this point | Description |
-+--------------------------------------+-------------+
-| ``test_state_dict``                  |             |
-+--------------------------------------+-------------+
-| ``test_has_observed_statedict``      |             |
-+--------------------------------------+-------------+
-| ``test_has_suggested_statedict``     |             |
-+--------------------------------------+-------------+
++--------------------------------------+------------------------------------------------------+
+| Tests that should pass at this point | Description                                          |
++--------------------------------------+------------------------------------------------------+
+| ``test_state_dict``                  | Test that state_dict can be used to resume algorithm |
+|                                      | and sample the same trials deterministically.        |
++--------------------------------------+------------------------------------------------------+
+| ``test_has_observed_statedict``      | Test that state_dict sets back observed trials.      |
++--------------------------------------+------------------------------------------------------+
+| ``test_has_suggested_statedict``     | Test that state_dict sets back suggested trials.     |
++--------------------------------------+------------------------------------------------------+
 
 
 .. code-block:: python
@@ -383,15 +392,18 @@ for the experiment and it should thus be the space used to infer whether all pos
 have been tried. See `skopt's implementation`_ for an example of a custom ``is_done``
 implementation to handle transformed space.
 
-+--------------------------------------+-------------+
-| Tests that should pass at this point | Description |
-+--------------------------------------+-------------+
-| ``test_is_done_cardinality``         |             |
-+--------------------------------------+-------------+
-| ``test_is_done_max_trials``          |             |
-+--------------------------------------+-------------+
-| ``test_optimize_branin``             |             |
-+--------------------------------------+-------------+
++--------------------------------------+-------------------------------------------------------+
+| Tests that should pass at this point | Description                                           |
++--------------------------------------+-------------------------------------------------------+
+| ``test_is_done_cardinality``         | Test that algorithms is done when all possible values |
+|                                      | has been tried.                                       |
++--------------------------------------+-------------------------------------------------------+
+| ``test_is_done_max_trials``          | Test that algorithm is done when maximum number of    |
+|                                      | trials have been tried.                               |
++--------------------------------------+-------------------------------------------------------+
+| ``test_optimize_branin``             | Test that algorithm reaches a reasonable objective    |
+|                                      | when optimizing branin.                               |
++--------------------------------------+-------------------------------------------------------+
 
 Useful attributes & methods
 ---------------------------
