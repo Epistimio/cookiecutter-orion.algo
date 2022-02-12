@@ -4,5 +4,5 @@
 ##
 cookiecutter>=1.5
 versioneer>=0.18
-black
+black>=22.1.0
 jinja2
