@@ -44,9 +44,16 @@ def main():
         path = join("venv", "bin")
         pip = which("pip", path=path) or "pip"  # GH CI workaround
         check_call(split(f"{pip} install -e ."))
+        check_call(split(f"{pip} install -r dev-requirements.txt"))
         check_call(split(f"{pip} install -r tests/requirements.txt"))
         pytest = which("pytest", path=path) or "pytest"  # GH CI workaround
-        test = "{:s} --verbose tests -x".format(pytest)
+        test = "{:s} -vv tests -x".format(pytest)
+        tox = which("tox", path=path) or "tox"  # GH CI workaround
+        test = "{:s} -e black".format(tox)
+        check_call(split(test))
+        test = "{:s} -e isort".format(tox)
+        check_call(split(test))
+        test = "{:s} -e pylint".format(tox)
         check_call(split(test))
     return 0
 

@@ -6,7 +6,6 @@
     "github_username": "",
     "copyright": "{% now 'utc', '%Y' %}, {{ cookiecutter.author_name }}",
     "short_description": "TODO",
-    "synopsis": "TODO",
     "algo_name": "",
     "algo_module_name": "{{ cookiecutter.algo_name|lower }}",
     "_extensions": ["jinja2_time.TimeExtension"],

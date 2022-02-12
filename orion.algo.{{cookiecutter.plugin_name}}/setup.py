@@ -26,7 +26,7 @@ setup_args = dict(
     package_dir={"": "src"},
     include_package_data=True,
     entry_points={
-        "OptimizationAlgorithm": [
+        "BaseAlgorithm": [
             "{{ cookiecutter.plugin_name }}_{{ cookiecutter.algo_name }} = orion.algo.{{ cookiecutter.plugin_name }}.{{ cookiecutter.algo_module_name }}:{{cookiecutter.algo_name }}"
         ],
     },
