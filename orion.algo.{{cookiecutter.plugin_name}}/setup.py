@@ -17,7 +17,9 @@ setup_args = dict(
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     description="{{ cookiecutter.short_description }}",
-    long_description=open(os.path.join(repo_root, "README.rst")).read(),
+    long_description=open(
+        os.path.join(repo_root, "README.rst"), "rt", encoding="utf8"
+    ).read(),
     license="BSD-3-Clause",
     author=u"{{ cookiecutter.author_name }}",
     author_email="{{ cookiecutter.author_email }}",

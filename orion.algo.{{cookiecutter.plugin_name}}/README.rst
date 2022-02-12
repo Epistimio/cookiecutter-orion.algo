@@ -51,7 +51,7 @@ Requirements
 Installation
 ------------
 
-You can install ``orion.algo.{{cookiecutter.plugin_name}}`` via `pip`_ from `PyPI`_
+You can install ``orion.algo.{{cookiecutter.plugin_name}}`` via pip
 
 .. code-block:: console
 
