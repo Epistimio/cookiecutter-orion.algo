@@ -19,6 +19,7 @@ include docs/requirements.txt
 prune docs/build
 prune docs/src/reference
 recursive-include src *.py
+recursive-include scripts *.sh
 recursive-include tests *.py *.yaml *.json *.txt *.yml *.in LICENSE
 include tests/requirements.txt
 include versioneer.py
