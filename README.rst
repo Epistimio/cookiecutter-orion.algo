@@ -278,6 +278,19 @@ All trials registered with ``self.register(trial)`` are stored in a dictionary
 ``self._trials_info`` in the format 
 ``{self.get_id(trial): (trial, trial.objective.value if trial.objective else None)}``.
 
+
++------------------------------------------------------------------------------------------------+
+| Warning                                                                                        |
++------------------------------------------------------------------------------------------------+
+|   You should use ``self.get_id(trial)`` to get the trials ID in the original space.            |
+|                                                                                                |
+|   The ID of a trial may be different in a transformed space than in the original space.        |
+|   This is because the ID is a hash of the trial's hyperparameters, and thus the transformation |
+|   of the hyperparameters is affecting the hash. Only the ID in the original space matters      |
+|   for Oríon and should be used to detect whether two trials are equal or equivalent in the     |
+|   original search space.                                                                       |
++------------------------------------------------------------------------------------------------+
+
 .. warning::
 
    You should use ``self.get_id(trial)`` to get the trials ID in the original space.
