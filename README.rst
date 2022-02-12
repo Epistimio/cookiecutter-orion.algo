@@ -245,6 +245,17 @@ so that ``self.has_suggested(trial)`` works properly.
 .. _format_trials: https://orion.readthedocs.io/en/stable/code/core/utils/format_trials.html
 
 
+
++--------------------------------------+-------------+
+| Tests that should pass at this point | Description |
++--------------------------------------+-------------+
+| ``test_suggest_n``                   |             |
++--------------------------------------+-------------+
+| ``test_has_suggested``               |             |
++--------------------------------------+-------------+
+| ``test_n_suggested``                 |             |
++--------------------------------------+-------------+
+
 .. admonition:: Tests that should pass at this point
 
    - test_suggest_n
