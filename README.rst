@@ -136,11 +136,14 @@ Tox file defining commands to run tests, build doc and publish code.
 Implementation
 ==============
 
-.. tip:: 
 
-   The cookiecutter creates a fully functionning random search plugin.
-   All tests should pass right away. Make sure your environment is setup properly
-   and that all tests are passing as expected before making any changes in the code.
++-----------------------------------------------------------------------------------+
+| Tip                                                                               |
++-----------------------------------------------------------------------------------+
+| The cookiecutter creates a fully functionning random search plugin.               |
+| All tests should pass right away. Make sure your environment is setup properly    |
+| and that all tests are passing as expected before making any changes in the code. |
++-----------------------------------------------------------------------------------+
 
 Base attributes & methods
 -------------------------
@@ -200,10 +203,14 @@ an example using the original space.
 
 .. _skopt's implementation: https://github.com/Epistimio/orion.algo.skopt/blob/master/src/orion/algo/skopt/bayes.py
 
-.. admonition:: Tests that should pass at this point
 
-   - test_get_id
-   - test_configuration
++--------------------------------------+-------------+
+| Tests that should pass at this point | Description |
++--------------------------------------+-------------+
+| ``test_get_id``                      |             |
++--------------------------------------+-------------+
+| ``test_configuration``               |             |
++--------------------------------------+-------------+
 
 
 .. _build_required_space: https://orion.readthedocs.io/en/stable/code/core/worker/transformer.html#orion.core.worker.transformer.build_required_space
@@ -237,14 +244,14 @@ was already suggested to make sure trials returned by ``suggest()`` are new ones
 Before returning a new trial, make sure to register it with ``self.register(trial)``
 so that ``self.has_suggested(trial)`` works properly.
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Tip                                                                                                                                                    |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Utility functions in `format_trials`_ are convenient to convert sets of hyperparameters from dictionary format or list of values to ``Trial`` objects. |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------+
+| Tip                                                                                          |
++----------------------------------------------------------------------------------------------+
+| Utility functions in `format_trials`_ are convenient to convert sets of hyperparameters from |
+| dictionary format or list of values to ``Trial`` objects.                                    |
++----------------------------------------------------------------------------------------------+
 
 .. _format_trials: https://orion.readthedocs.io/en/stable/code/core/utils/format_trials.html
-
 
 +--------------------------------------+-------------+
 | Tests that should pass at this point | Description |
@@ -255,12 +262,6 @@ so that ``self.has_suggested(trial)`` works properly.
 +--------------------------------------+-------------+
 | ``test_n_suggested``                 |             |
 +--------------------------------------+-------------+
-
-.. admonition:: Tests that should pass at this point
-
-   - test_suggest_n
-   - test_has_suggested
-   - test_n_suggested
 
 
 .. code-block:: python
@@ -291,29 +292,30 @@ All trials registered with ``self.register(trial)`` are stored in a dictionary
 |   original search space.                                                                       |
 +------------------------------------------------------------------------------------------------+
 
-.. warning::
-
-   You should use ``self.get_id(trial)`` to get the trials ID in the original space.
-      
-   The ID of a trial may be different in a transformed space than in the original space.
-   This is because the ID is a hash of the trial's hyperparameters, and thus the transformation
-   of the hyperparameters is affecting the hash. Only the ID in the original space matters
-   for Oríon and should be used to detect whether two trials are equal or equivalent in the 
-   original search space. 
 
 .. _Trial: https://orion.readthedocs.io/en/stable/code/core/worker/trial.html#orion.core.worker.trial.Trial
 
-.. admonition:: Tests that should pass at this point
-
-   - test_observe
-   - test_has_observed
-   - test_n_observed
-   - test_cat_data
-   - test_int_data
-   - test_logint_data
-   - test_logreal_data
-   - test_real_data
-   - test_shape_data
++--------------------------------------+-------------+
+| Tests that should pass at this point | Description |
++--------------------------------------+-------------+
+| ``test_observe``                     |             |
++--------------------------------------+-------------+
+| ``test_has_observed``                |             |
++--------------------------------------+-------------+
+| ``test_n_observed``                  |             |
++--------------------------------------+-------------+
+| ``test_cat_data``                    |             |
++--------------------------------------+-------------+
+| ``test_int_data``                    |             |
++--------------------------------------+-------------+
+| ``test_logint_data``                 |             |
++--------------------------------------+-------------+
+| ``test_logreal_data``                |             |
++--------------------------------------+-------------+
+| ``test_real_data``                   |             |
++--------------------------------------+-------------+
+| ``test_shape_data``                  |             |
++--------------------------------------+-------------+
 
 
 .. code-block:: python
@@ -326,10 +328,13 @@ sequence of points.
 You may need to seed global random number generators such as ``random`` or ``numpy.random`` if you
 are wrapping a third party library using them.
 
-.. admonition:: Tests that should pass at this point
-
-   - test_seed_rng
-   - test_seed_rng_init
++--------------------------------------+-------------+
+| Tests that should pass at this point | Description |
++--------------------------------------+-------------+
+| ``test_seed_rng``                    |             |
++--------------------------------------+-------------+
+| ``test_seed_rng_init``               |             |
++--------------------------------------+-------------+
 
 .. code-block:: python
 
@@ -351,11 +356,15 @@ Stateful attributes of the algorithm are reset using the given ``state_dict``. N
 ``set_state`` must be compliant with ``state_dict`` and use
 the same structure.
 
-.. admonition:: Tests that should pass at this point
-
-   - test_state_dict
-   - test_has_observed_statedict
-   - test_has_suggested_statedict
++--------------------------------------+-------------+
+| Tests that should pass at this point | Description |
++--------------------------------------+-------------+
+| ``test_state_dict``                  |             |
++--------------------------------------+-------------+
+| ``test_has_observed_statedict``      |             |
++--------------------------------------+-------------+
+| ``test_has_suggested_statedict``     |             |
++--------------------------------------+-------------+
 
 
 .. code-block:: python
@@ -374,11 +383,15 @@ for the experiment and it should thus be the space used to infer whether all pos
 have been tried. See `skopt's implementation`_ for an example of a custom ``is_done``
 implementation to handle transformed space.
 
-.. admonition:: Tests that should pass at this point
-
-   - test_is_done_cardinality
-   - test_is_done_max_trials
-   - test_optimize_branin
++--------------------------------------+-------------+
+| Tests that should pass at this point | Description |
++--------------------------------------+-------------+
+| ``test_is_done_cardinality``         |             |
++--------------------------------------+-------------+
+| ``test_is_done_max_trials``          |             |
++--------------------------------------+-------------+
+| ``test_optimize_branin``             |             |
++--------------------------------------+-------------+
 
 Useful attributes & methods
 ---------------------------
