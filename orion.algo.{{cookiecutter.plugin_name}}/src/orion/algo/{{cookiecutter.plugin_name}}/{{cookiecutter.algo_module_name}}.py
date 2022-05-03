@@ -59,7 +59,7 @@ class {{ cookiecutter.algo_name }}(BaseAlgorithm):
         self.rng.set_state(state_dict["rng_state"])
 
     def suggest(self, num):
-        """Suggest a `num`ber of new sets of parameters.
+        """Suggest a number ``num`` of new sets of parameters.
 
         TODO: document how suggest work for this algo
 
